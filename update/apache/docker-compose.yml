@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+   bestsiteever:
+     image: http:1.0
+     ports:
+       - "80:80"
+     restart: always
+     volumes:
+       - data:/usr/local/apache2/htdocs/
+
+volumes:
+   data:
+     driver: local
