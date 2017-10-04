@@ -17,4 +17,4 @@ RUN rm /*.tar.gz
 
 EXPOSE 80
 
-CMD service mysql start && mysqladmin -u root password "pass" && mysql -u root -ppass -e "create database wordpress"  && /usr/sbin/apache2ctl -D FOREGROUND
+CMD find /var/lib/mysql -type f -exec touch {} \; && service mysql start && mysqladmin -u root password "pass" && mysql -u root -ppass -e "create database wordpress"  && /usr/sbin/apache2ctl -D FOREGROUND
