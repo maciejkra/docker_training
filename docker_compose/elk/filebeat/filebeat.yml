@@ -7,5 +7,3 @@ filebeat.prospectors:
 
 output.elasticsearch:
   hosts: ['elasticsearch:9200']
-
-
