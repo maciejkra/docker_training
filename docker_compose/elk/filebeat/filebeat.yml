@@ -1,0 +1,25 @@
+filebeat.prospectors:
+- type: log
+  json.keys_under_root: true
+# Json key name, which value contains a sub JSON document produced by our application Console Appender  
+  json.message_key: log
+  enabled: true
+  encoding: utf-8
+  document_type: docker
+  paths:
+# Location of all our Docker log files (mapped volume in docker-compose.yml)  
+    - '/usr/share/filebeat/dockerlogs/*/*.log'
+processors:
+- decode_json_fields:
+    fields: ["log"]
+    target: ""
+    overwrite_keys: true
+- add_docker_metadata: ~
+ 
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+
+output.elasticsearch:
+  hosts: ['elasticsearch:9200']
+
