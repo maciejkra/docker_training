@@ -1,8 +1,8 @@
 version: "3"
 services:
   web:
-    # replace username/repo:tag with your name and image details
-    image: maciek
+    image: web:test
+    build: ./
     deploy:
       replicas: 5
       resources:
@@ -12,7 +12,11 @@ services:
       restart_policy:
         condition: on-failure
     ports:
-      - "4000:80"
+      - "80:80"
+    networks:
+      - webnet
+  redis:
+    image: redis
     networks:
       - webnet
 networks:
