@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    stages {
+        stage('Part 1') {
+            agent none
+	    /*agent { 
+                docker { image 'maven:3-alpine' }
+            }*/
+            steps {
+                sh 'echo "First Step"'
+            }
+        }
+        stage('Part 2') {
+            agent none
+            when {
+              branch 'master'
+            }
+            steps {
+                sh 'docker ps'
+            }
+        }
+}
+}
