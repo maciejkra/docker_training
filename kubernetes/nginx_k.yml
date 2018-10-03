@@ -25,5 +25,6 @@ metadata:
 spec:
   selector:
     app: nginx
+  type: LoadBalancer
   ports:
   - port: 80
