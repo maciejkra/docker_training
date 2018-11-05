@@ -1,4 +1,4 @@
-FROM maven
+FROM maven:3.5.3
 COPY ./spring-boot-websocket-chat-demo /root/spring-boot-websocket-chat-demo
 RUN cd /root/spring-boot-websocket-chat-demo && \
     mvn package
