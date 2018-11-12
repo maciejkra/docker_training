@@ -1,17 +1,20 @@
 pipeline {
     agent any
     stages {
-        stage('Part 1') {
-            agent none
-	    /*agent { 
-                docker { image 'maven:3-alpine' }
-            }*/
+        stage('Build Image') {
             steps {
                 sh 'echo "First Step"'
             }
         }
+	stage('Push Image') {
+            steps {
+                        withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+                        	sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+                        	sh 'docker push krajewskim/test:' + env.BRANCH_NAME
+                        }
+            }
+	}
         stage('Part 2') {
-            agent none
             when {
               branch 'master'
             }
