@@ -1,4 +1,4 @@
-FROM maven
+FROM maven:3.5.3
 EXPOSE 8080
 COPY ./ ./
 RUN mvn clean install -DskipTests

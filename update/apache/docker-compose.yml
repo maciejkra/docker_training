@@ -3,12 +3,12 @@ version: '3'
 services:
 
    bestsiteever:
-     image: http:1.0
+     image: nginx
      ports:
        - "80:80"
      restart: always
      volumes:
-       - data:/usr/local/apache2/htdocs/
+       - data:/usr/share/nginx/html
 
 volumes:
    data:
