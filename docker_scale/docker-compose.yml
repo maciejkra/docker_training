@@ -2,11 +2,13 @@ version: '2'
 services:
   web:
     build: ./
-    ports:
-      - 5000
     networks:
       - front-tier
       - back-tier
+    labels:
+      - "traefik.frontend.rule=Path: /"
+      - "traefik.port=80"
+      - "traefik.docker.network=docker_scale_front-tier"
 
   redis:
     image: redis
@@ -14,11 +16,10 @@ services:
       - back-tier
 
   lb:
-    image: dockercloud/haproxy
+    image: traefik
+    command: --docker --docker.watch
     ports:
       - 80:80
-    links:
-      - web
     networks:
       - front-tier
     volumes:
