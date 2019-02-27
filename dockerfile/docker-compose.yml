@@ -1,0 +1,6 @@
+version: '3.3'
+
+services:
+   wordpress:
+     image: wordpress:latest
+     restart: always
