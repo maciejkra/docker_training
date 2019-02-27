@@ -4,3 +4,5 @@ services:
    wordpress:
      image: wordpress:latest
      restart: always
+     ports:
+       - 80:80
