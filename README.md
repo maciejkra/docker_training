@@ -5,7 +5,8 @@ Uruchomienie pierwszego kontenera :)
 docker run docker/whalesay cowsay boo
 ```
 
-###Podstawowe komendy:
+### Podstawowe komendy:
+
 Sciagniecie obrazu
 ```
 docker pull IMAGE
