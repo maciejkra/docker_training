@@ -1,0 +1,13 @@
+version: '2.2'
+
+services:
+   killer1:
+     image: monitoringartist/docker-killer
+     command: cpubomb
+     cpu_shares: 73
+
+
+   killer2:
+     image: monitoringartist/docker-killer
+     command: cpubomb
+
