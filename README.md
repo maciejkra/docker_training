@@ -1,5 +1,43 @@
 # docker_training
 
+## Instalacja
+
+<details><summary>Install Docker on Linux</summary>
+<p>
+
+```bash
+# Install Docker
+curl -fsSL https://get.docker.com | sh
+
+# Install Docker w $HOME jako non-root
+curl -fsSL https://get.docker.com/rootless | sh
+```
+
+</p>
+</details>
+
+<details><summary>Install Docker helpers</summary>
+<p>
+
+```bash
+# Windows
+$ Set-ExecutionPolicy RemoteSigned
+$ Install-Module posh-docker
+$ Import-Module posh-docker
+
+# Mac
+$ brew tap homebrew/completions
+$ brew install docker-completion
+$ brew install docker-compose-completion
+
+# Linux
+$ apt install bash-completion
+$ curl https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker -o /etc/bash_completion.d/docker.sh
+```
+
+</p>
+</details>
+
 Uruchomienie pierwszego kontenera :)
 ```
 docker run docker/whalesay cowsay boo
