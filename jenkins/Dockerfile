@@ -1,6 +1,13 @@
-FROM jenkins/jenkins
-USER root
-RUN curl -fsSL get.docker.com -o get-docker.sh
-RUN sh get-docker.sh
-RUN usermod -aG docker jenkins
-#USER jenkins
+FROM maven:3-alpine
+
+COPY pom.xml pipeline/
+
+COPY src/ pipeline/src/
+
+WORKDIR pipeline/
+
+RUN mvn clean install
+
+EXPOSE 8090
+
+ENTRYPOINT [ "java", "-jar", "/pipeline/target/jenkins-pipeline.jar"]
