@@ -1,0 +1,16 @@
+version: '3.2'
+
+services:
+   killer1:
+     image: monitoringartist/docker-killer
+     command: cpubomb
+     deploy:
+        resources:
+          limits:
+            cpus: '0.1'
+
+
+   killer2:
+     image: monitoringartist/docker-killer
+     command: cpubomb
+
