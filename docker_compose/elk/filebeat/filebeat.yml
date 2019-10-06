@@ -1,9 +1,7 @@
-filebeat.prospectors:
+filebeat.inputs:
 - type: docker
   containers.ids:
   - '*'
-  processors:
-  - add_docker_metadata: ~
 
 output.elasticsearch:
   hosts: ['elasticsearch:9200']
