@@ -16,7 +16,7 @@ services:
       - back-tier
 
   lb:
-    image: traefik
+    image: traefik:1.7
     command: --docker --docker.watch
     ports:
       - 80:80
