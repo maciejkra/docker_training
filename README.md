@@ -52,7 +52,7 @@ docker pull IMAGE
 
 Wylistowanie obrazów
 ```
-docker images list
+docker images
 ```
 
 Uruchomienie obrazu
