@@ -1,0 +1,13 @@
+    spec:
+      containers:
+      - name: container
+        image: redis
+        ports:
+        - containerPort: 6379
+        volumeMounts:
+        - name: redis-data
+          mountPath: /data
+      volumes:
+      - name: redis-data
+        persistentVolumeClaim:
+          claimName: local01

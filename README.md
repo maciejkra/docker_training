@@ -40,7 +40,7 @@ $ curl https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/
 
 Uruchomienie pierwszego kontenera :)
 ```
-docker run docker/whalesay cowsay boo
+docker run hello-world
 ```
 
 ### Podstawowe komendy:
