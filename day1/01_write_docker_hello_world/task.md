@@ -24,7 +24,7 @@ docker image build -t <name> .
 ```
 docker container run my-image
 ```
-should display *Hellow World*
+should display *Hello World*
 
 
 ```
