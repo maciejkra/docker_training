@@ -3,7 +3,7 @@
 ## Container was created with
 
 ```sh
-docker build -t marcinmakowski/workshops:password .
+docker build -t krajewskim/workshops:password .
 ```
 
 Task: *Find password*
