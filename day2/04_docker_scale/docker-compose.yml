@@ -8,7 +8,7 @@ services:
     labels:
       - "traefik.frontend.rule=Path: /"
       - "traefik.port=80"
-      - "traefik.docker.network=docker_scale_front-tier"
+      - "traefik.docker.network=04_docker_scale_front-tier"
 
   redis:
     image: redis
