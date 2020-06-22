@@ -11,3 +11,6 @@ services:
      image: monitoringartist/docker-killer
      command: cpubomb
 
+
+   nginx:
+     image: nginx

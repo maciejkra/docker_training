@@ -1,4 +1,4 @@
-version: '3.3'
+version: '2.3'
 
 services:
    db:
@@ -11,13 +11,18 @@ services:
        MYSQL_DATABASE: wordpress
        MYSQL_USER: wordpress
        MYSQL_PASSWORD: wordpress
+     healthcheck:
+       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+       timeout: 2s
+       retries: 10
 
    wordpress:
      depends_on:
-       - db
+       db:
+         condition: service_healthy
      image: wordpress:latest
      ports:
-       - "8000:80"
+       - "80:80"
      restart: always
      environment:
        WORDPRESS_DB_HOST: db:3306
