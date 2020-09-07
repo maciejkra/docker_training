@@ -17,10 +17,4 @@ RUN rm /*.tar.gz
 
 EXPOSE 80
 
-RUN apt-get update && apt-get -y install ca-certificates
-ADD https://get.aquasec.com/microscanner .
-RUN chmod +x microscanner
-RUN ./microscanner NzNjMWQ1YTI2OTlj
-
-
 CMD service mysql start && mysqladmin -u root password "pass" && mysql -u root -ppass -e "create database wordpress"  && /usr/sbin/apache2ctl -D FOREGROUND
