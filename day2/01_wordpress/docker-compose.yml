@@ -11,15 +11,11 @@ services:
        MYSQL_DATABASE: wordpress
        MYSQL_USER: wordpress
        MYSQL_PASSWORD: wordpress
-     healthcheck:
-       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-       timeout: 2s
-       retries: 10
+
 
    wordpress:
      depends_on:
-       db:
-         condition: service_healthy
+       - db
      image: wordpress:latest
      ports:
        - "80:80"
