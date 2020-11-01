@@ -1,3 +1,0 @@
-FROM my-image
-LABEL imagetype="workshops"
-CMD ["Hello Maciej"]

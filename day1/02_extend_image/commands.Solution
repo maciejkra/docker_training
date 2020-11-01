@@ -1,8 +1,0 @@
-docker image build -t my-extended-image -f .\Dockerfile.Solution .
-docker image history my-extended-image
-docker image ls  -f label=imagetype=workshops
-
-docker container run --name container-maciej --label owner=maciej my-extended-image
-docker container ls -a  -f "label=owner=maciej"
-
-docker container run --rm --label owner=maciej my-extended-image
