@@ -15,12 +15,12 @@ kubectl get svc myapp-pod  -o jsonpath='{.spec.ports[0].nodePort}'
 kubectl delete svc myapp-pod
 kubectl apply -f service.yaml
 kubectl get svc
-kubectl exec -ti myapp-pod cat /etc/resolv.conf
+kubectl exec -ti myapp-pod -- cat /etc/resolv.conf
 ```
 
 # Create google service
 
 ```sh
-kubectl create -f .\google.service.yaml
-kubectl exec -ti myapp-pod curl google-service
+kubectl create -f google.service.yaml
+kubectl exec -ti myapp-pod -- curl google-service
 ```

@@ -1,7 +1,7 @@
 # Create deployment
 
 ```sh
-kubectl create -f .\deployment.yaml
+kubectl create -f deployment.yaml
 kubectl get rs
 kubectl get pods
 kubectl scale deployment/nginx-deployment --replicas=0
@@ -27,8 +27,7 @@ kubectl rollout history deployments/nginx-deployment
 ```sh
 kubectl get pods
 kubectl get pods -l app=myapp -o jsonpath='{.items[0].metadata.name}'
-kubectl exec -ti $(kubectl get pods -l app=myapp -o jsonpath='{.items[0].metadata.name}') /bin/bash
-env|grep TEST_ENV
+kubectl exec -ti $(kubectl get pods -l app=myapp -o jsonpath='{.items[0].metadata.name}') -- env | grep TEST_ENV
 ```
 
 # Rollback to previous version
@@ -42,7 +41,7 @@ kubectl exec -ti $(kubectl get pods -l app=myapp -o jsonpath='{.items[0].metadat
 env|grep TEST_ENV
 
 kubectl rollout undo deployment/nginx-deployment --to-revision=2
-kubectl exec -ti <container_name>  /bin/bash
+kubectl exec -ti <container_name> -- /bin/bash
 env|grep TEST_ENV
 ```
 
@@ -58,8 +57,8 @@ kubectl describe svc my-app-service
 # Debug information:
 ```sh
 kubectl logs -l app=myapp
-kubectl exec -ti $(kubectl get pods -l app=myapp -o jsonpath='{.items[0].metadata.name}') cat /etc/resolv.conf
-kubectl exec -ti $(kubectl get pods -l app=myapp -o jsonpath='{.items[0].metadata.name}') curl my-app-service
+kubectl exec -ti $(kubectl get pods -l app=myapp -o jsonpath='{.items[0].metadata.name}') -- cat /etc/resolv.conf
+kubectl exec -ti $(kubectl get pods -l app=myapp -o jsonpath='{.items[0].metadata.name}') -- curl my-app-service
 kubectl logs -l app=myapp
 kubectl get rs
 ```

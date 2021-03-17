@@ -118,9 +118,6 @@ curl -sSf --unix-socket /var/run/docker.sock 0/containers/json
 ```bash
 # Windows and Mac
 docker run -it --rm --privileged --pid=host justincormack/nsenter1
-
-# Mac
-screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty
 ```
 
 </p>

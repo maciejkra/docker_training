@@ -10,6 +10,6 @@ Access new port
 # Verify name resolv
 
 ```sh
-kubectl exec -ti $(kubectl get pods -l app=myapp -o jsonpath='{.items[0].metadata.name}') curl my-app-service
-kubectl exec -ti $(kubectl get pods -l app=myapp -o jsonpath='{.items[0].metadata.name}') curl my-app-service.default.svc.cluster.local
+kubectl exec -ti $(kubectl get pods -l app=myapp -o jsonpath='{.items[0].metadata.name}') curl -- my-app-service
+kubectl exec -ti $(kubectl get pods -l app=myapp -o jsonpath='{.items[0].metadata.name}') curl -- my-app-service.default.svc.cluster.local
 ```

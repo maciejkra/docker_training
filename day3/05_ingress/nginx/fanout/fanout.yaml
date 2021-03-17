@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: fanout-ing
@@ -10,10 +10,16 @@ spec:
   - http:
       paths:
       - path: /host/?(.*)
+        pathType: Prefix
         backend:
-          serviceName: helloapp-fanout-host-svc
-          servicePort: 80
+          service:
+            name: helloapp-fanout-host-svc
+            port:
+              number: 80
       - path: /echo/?(.*)
+        pathType: Prefix
         backend:
-          serviceName: helloapp-fanout-echo-svc
-          servicePort: 8080
+          service:
+            name: helloapp-fanout-echo-svc
+            port:
+              number: 8080

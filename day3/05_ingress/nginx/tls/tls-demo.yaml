@@ -32,7 +32,7 @@ spec:
     port: 80
     targetPort: http
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: pk
@@ -45,6 +45,10 @@ spec:
     - host: localhost
       http:
         paths:
-        - backend:
-            serviceName: pk
-            servicePort: 80
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: pk
+              port:
+                number: 80

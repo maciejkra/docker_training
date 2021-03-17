@@ -3,33 +3,27 @@ version: '2'
 services:
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
-    container_name: elasticsearch
+    image: amazon/opendistro-for-elasticsearch
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - discovery.type=single-node
-      - xpack.security.enabled=false
-      - xpack.monitoring.enabled=false
-      - xpack.watcher.enabled=false
     ports:
       - 9200:9200
-    networks:
-      - esnet
+    volumes:
+      - "./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml"
+
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.4.0
+    image: amazon/opendistro-for-elasticsearch-kibana
     ports:
       - "5601:5601"
-    networks:
-      - esnet
+    environment:
+      ELASTICSEARCH_URL: https://elasticsearch:9200
+      ELASTICSEARCH_HOSTS: https://elasticsearch:9200
+
   filebeat:
-    build:
-      context: ./filebeat
+    image: docker.elastic.co/beats/filebeat-oss:7.11.1
+    user: root
     volumes:
+      - "./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro"
       - "/var/lib/docker/containers:/var/lib/docker/containers:ro"
       - "/var/run/docker.sock:/var/run/docker.sock"
-    networks:
-      - esnet
-
-networks:
-  esnet:
-    driver: bridge

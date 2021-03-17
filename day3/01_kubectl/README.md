@@ -34,12 +34,6 @@ Some hardcore stuff
 kubectl delete svc --all
 ```
 
-List all Persistent Volumes sorted by their name
-
-```
-kubectl get pv | grep -v NAME | sort -k 2 -rh
-```
-
 Save the manifest of a running pod
 ```sh
 kubectl get pod <name> -o yaml > pod.yml
@@ -47,5 +41,5 @@ kubectl get pod <name> -o yaml > pod.yml
 ```
 
 ```sh
-kubetctl get all
+kubectl get all
 ```

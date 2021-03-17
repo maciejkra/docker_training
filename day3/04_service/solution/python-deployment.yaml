@@ -11,15 +11,13 @@ spec:
       app: python
   template:
     metadata:
-      name: python-pod
+      name: python
       labels:
         app: python
     spec:
       containers:
-      - name: python-container
+      - name: python
         image: 127.0.0.1:5000/python-api:redis
-        ports:
-          - containerPort: 5002
         env:
           - name: LOG_LEVEL
             value: "DEBUG"

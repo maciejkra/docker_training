@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nbvh-ing
@@ -10,20 +10,34 @@ spec:
   - host: bug.127.0.0.1.nip.io
     http:
       paths:
-      - backend:
-          serviceName:  helloapp-nbvh-nohost-svc
-          servicePort: 8080
+      - path: /?(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: helloapp-nbvh-nohost-svc
+            port:
+              number: 8080
   - host: demo.127.0.0.1.nip.io
     http:
       paths:
       - path: /host/?(.*)
+        pathType: Prefix
         backend:
-          serviceName: helloapp-nbvh-host-svc
-          servicePort: 80
+          service:
+            name: helloapp-nbvh-host-svc
+            port: 
+              number: 80
       - path: /echo/?(.*)
+        pathType: Prefix
         backend:
-          serviceName: helloapp-nbvh-echo-svc
-          servicePort: 8080
-      - backend:
-          serviceName:  helloapp-nbvh-dumpster-svc
-          servicePort: 8080
+          service:
+            name: helloapp-nbvh-echo-svc
+            port:
+              number: 8080
+      - path: /?(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name:  helloapp-nbvh-dumpster-svc
+            port:
+              number: 8080
