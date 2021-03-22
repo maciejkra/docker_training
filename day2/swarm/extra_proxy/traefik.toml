@@ -1,0 +1,11 @@
+defaultEntryPoints = ["http", "https"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+#  [entryPoints.https]
+#  address = ":443"
+#    [entryPoints.https.tls]
+#      [[entryPoints.https.tls.certificates]]
+#      certFile = "crt/wildcard_dev_yameo_pl.crt"
+#      keyFile = "crt/wildcard_dev_yameo_pl.key"
