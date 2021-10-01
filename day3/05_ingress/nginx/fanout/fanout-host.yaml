@@ -14,7 +14,7 @@ kind: Deployment
 metadata:
   name: helloapp-fanout-host-dep
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: helloapp-fanout-host-dep
