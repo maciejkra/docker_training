@@ -14,7 +14,7 @@ spec:
   - host: demo.134.122.64.99.nip.io
     http:
       paths:
-      - path: /
+      - path: /?(.*)
         pathType: Prefix
         backend:
           service:
