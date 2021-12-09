@@ -16,7 +16,9 @@ If you have any problems, run `docker-compose up -d` first.
 
 Optionally, [enable docker metrics](https://docs.docker.com/config/daemon/prometheus/) by adding this to your docker config:
 
-## Fancy querry
-```
-{job="tns/app"} | logfmt | status>=500 and status <=599 and duration > 50ms
+```json
+{
+  "metrics-addr" : "127.0.0.1:9323",
+  "experimental" : true
+}
 ```
