@@ -9,5 +9,4 @@ RUN gradle build
 FROM openjdk:jre-alpine
 COPY --from=builder XXXX
 EXPOSE 8080/tcp
-ENV MULTISTAGE="yes!"
 ENTRYPOINT [ "java", "-jar", "./gs-spring-boot-docker-0.1.0.jar"]

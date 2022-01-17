@@ -2,6 +2,7 @@
 kubectl get pod
 kubectl apply -f replica-set.yaml
 kubectl get pod -o wide
+kubectl get all
 ```
 # change pod name
 ```sh

@@ -1,7 +1,7 @@
 # Create deployment
 
 ```sh
-kubectl create -f deployment.yaml
+kubectl apply -f deployment.yaml
 kubectl get rs
 kubectl get pods
 kubectl scale deployment/nginx-deployment --replicas=0
@@ -40,7 +40,7 @@ kubectl rollout history deployments/nginx-deployment
 kubectl exec -ti $(kubectl get pods -l app=myapp -o jsonpath='{.items[0].metadata.name}') -- env|grep TEST_ENV
 
 kubectl rollout undo deployment/nginx-deployment --to-revision=2
-kubectl exec -ti <container_name> -- env|grep TEST_ENV
+kubectl exec -ti $(kubectl get pods -l app=myapp -o jsonpath='{.items[0].metadata.name}') -- env|grep TEST_ENV
 ```
 
 # Scale deployment 
