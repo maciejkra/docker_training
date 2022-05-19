@@ -2,8 +2,7 @@
 
 ```sh
 kubectl apply -f deployment.yaml
-kubectl get rs
-kubectl get pods
+kubectl get all
 kubectl scale deployment/nginx-deployment --replicas=0
 kubectl get pods
 ```
@@ -13,7 +12,7 @@ add `env` list
 
 ```sh
 kubectl rollout history deployments/nginx-deployment
-kubectl apply -f deployment.yaml --record
+kubectl apply -f deployment.yaml
 
 kubectl rollout status deployment/nginx-deployment
 kubectl rollout history deployment/nginx-deployment --revision=1
