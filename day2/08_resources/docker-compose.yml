@@ -1,5 +1,3 @@
-version: '2.2'
-
 services:
    killer1:
      image: monitoringartist/docker-killer
@@ -10,7 +8,3 @@ services:
    killer2:
      image: monitoringartist/docker-killer
      command: cpubomb
-
-
-   nginx:
-     image: nginx
