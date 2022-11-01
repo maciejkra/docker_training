@@ -25,6 +25,6 @@ spec:
     spec:
       containers:
       - name: helloapp-fanout-host-dep
-        image: poznajkubernetes/helloapp:svc
+        image: httpd
         ports:
         - containerPort: 8080

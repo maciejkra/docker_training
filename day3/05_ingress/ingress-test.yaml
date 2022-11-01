@@ -13,10 +13,10 @@ spec:
     spec:
       containers:
       - name: demo
-        image: poznajkubernetes/pkad:blue
+        image: nginx
         resources: {}
         ports:
-        - containerPort: 8080
+        - containerPort: 80
           name: http
 ---
 kind: Service
@@ -37,6 +37,7 @@ kind: Ingress
 metadata:
   name: pk
 spec:
+  ingressClassName: nginx
   defaultBackend:
     service:
       name: pk
