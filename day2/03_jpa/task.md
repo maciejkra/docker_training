@@ -10,11 +10,11 @@ To build this APP you need to
     - USER
     - PASS
 
-after everything would work jusr run `docker-compose up -d`
+after everything would work jusr run `docker compose up -d`
 and run
 ```
 curl -H 'Content-Type: application/json' -X POST -d '{"name":"Maciej
-Krajewski","country":"Poland"}' 
+Krajewski","country":"Poland"}' http://127.0.0.1:8080/api/users
 ```
 
 this command should run put some information to the app if everything would work just run 
