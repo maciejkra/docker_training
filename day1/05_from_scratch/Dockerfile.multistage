@@ -15,7 +15,7 @@ COPY *.go ./
 RUN CGO_ENABLED=0 go build -installsuffix 'static' -o /docker-gs-ping
 
 # add a user here because addgroup and adduser are not available in scratch
-RUN echo "nobody:x:65534:65534:Nobody:/:" > /etc_passwd
+RUN echo "nobody:x:65534:65534:Nobody:/:" > /etc/passwd
 
 ##
 ## Deploy
