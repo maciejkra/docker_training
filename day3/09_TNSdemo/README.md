@@ -7,12 +7,12 @@ To run:
 
 ```shell
 $ docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions
-$ docker-compose up -d
+$ docker compose up -d
 ```
 
 The navigate to http://localhost:3000 to see Grafana.
 
-If you have any problems, run `docker-compose up -d` first.
+If you have any problems, run `docker compose up -d` first.
 
 Optionally, [enable docker metrics](https://docs.docker.com/config/daemon/prometheus/) by adding this to your docker config:
 

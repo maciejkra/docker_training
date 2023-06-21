@@ -2,9 +2,13 @@ services:
    killer1:
      image: monitoringartist/docker-killer
      command: cpubomb
-     cpu_shares: 73
+     deploy:
+        resources:
+          limits:
+            cpus: '0.1'
 
 
    killer2:
      image: monitoringartist/docker-killer
      command: cpubomb
+

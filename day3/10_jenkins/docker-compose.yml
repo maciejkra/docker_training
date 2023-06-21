@@ -1,4 +1,3 @@
-version: '3.2'
 services:
   jenkins:
     image: jenkins/jenkins
@@ -11,8 +10,6 @@ services:
     volumes:
       - jenkins:/var/jenkins_home .
       - /var/run/docker.sock:/var/run/docker.sock
-    depends_on:
-      - sonarqube
     restart: always
 volumes:
     jenkins:
