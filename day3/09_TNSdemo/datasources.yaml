@@ -7,11 +7,12 @@ datasources:
     editable: true
     isDefault: true
     jsonData:
-      httpMethod: GET
+        httpMethod: GET
+    version: 1
+    jsonData:
       exemplarTraceIdDestinations:
       - name: traceID
         datasourceUid: tempo
-    version: 1
   - name: Loki
     type: loki
     uid: loki
