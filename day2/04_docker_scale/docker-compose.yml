@@ -5,9 +5,10 @@ services:
       - front-tier
       - back-tier
     labels:
-      - "traefik.frontend.rule=Path: /"
-      - "traefik.port=80"
-      - "traefik.docker.network=04_docker_scale_front-tier"
+      - "traefik.enable=true"
+      - "traefik.http.routers.go.rule=Path(`/`)"
+      - "traefik.http.services.go.loadbalancer.server.port=80"
+      - "traefik.docker.network=17_docker_scale_front-tier"
 
   redis:
     image: redis
@@ -15,8 +16,8 @@ services:
       - back-tier
 
   lb:
-    image: traefik:1.7
-    command: --docker --docker.watch
+    image: traefik:2.10
+    command: --providers.docker --entrypoints.web.address=:80 --providers.docker.exposedbydefault=false
     ports:
       - 80:80
     networks:
@@ -26,6 +27,4 @@ services:
 
 networks:
   front-tier:
-    driver: bridge
   back-tier:
-    driver: bridge
